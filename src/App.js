@@ -1,62 +1,75 @@
-import logo from './logo.svg';
-import './App.css';
-import { useState } from "react"
-
+import React, { useState } from "react";
+import Input from "./Input";
+import Button from "./Button";
+import Card from "./Card";
+import Select from "./Select";
+import Table from "./Table";
 
 function App() {
-  const [text, retext] = useState("")
-  const [todo, setTodo] = useState([])
-  const [index, setindex] = useState()
+  const [inputValue, setInputValue] = useState("");
+  const [selectedOption, setSelectedOption] = useState("");
+  
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
 
+  const handleButtonClick = () => {
+    // Handle button click logic
+  };
 
-  let print = () => {
-    if (index) {
+  const handleSelectChange = (e) => {
+    setSelectedOption(e.target.value);
+  };
 
-      todo[index] = text
-      setTodo([...todo])
-
-    } else {
-      setTodo([...todo, text])
-
-    }
-    
-    retext("")
-
-
-  }
-
-  let remove = (x, id) => {
-    //  console.log(x)
-    const todo2 = [...todo]
-    todo2.splice(id, 1)
-
-    setTodo(todo2)
-
-  }
-
-  let edit = (x, i) => {
-    setindex([i])
-    retext(x)
-  }
+  const tableData = [
+    { name: "Ahmed", age: 19, location: "karachi" , institute:"SAIMS",address:"Tower near aga khan hospital,Karachi" },
+    { name: "Kifal", age: 18, location: "Lahore",institute:"BMJ", address:"Bahadurabad nera Tooso,Karachi" },
+    { name: "Usaid", age: 16, location: "Rawal-Pindi",institute:"KMA", address:"Husainabad nera Bombay koila karahi,Karachi" },
+    // Add more data
+  ];
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div>
+      
+    <h1 className="input1">INPUT COMPONENT:</h1>
+      <Input placeholder="Enter something" value={inputValue} onChange={handleInputChange} />
+      <br></br>
+      <br></br>
+      <br></br>
+    <h1>BUTTON COMPONENT:</h1>
+      <Button label="CLICK ME" onClick={handleButtonClick} />
+      <br></br>
+      <br></br>
+      <br></br>
+    <h1>SELECT COMPONENT:</h1>
+      <Select
+        options={[
+          {value:"Lahore",label:"Where do you live"},
+          { value: "Karachi", label: "Karachi" },
+          { value: "Islamabad", label: "Islamabad" },
+          { value: "Quetta", label: "Quetta" },
+          { value: "Peshawar", label: "Peshawar" },
+          { value: "Rawal-Pindi", label: "Rawal-Pindi" },
+          {value:"Lahore",label:"Lahore"}
 
-        {/* <p>{text}</p> */}
-         <h3>  TODO APP </h3><span> <input placeholder="Enter The Todo Here" className="input" onChange={e => retext(e.target.value)} value={text} />
-          <button onClick={print} className="btn2">Add+</button>
-        </span>
-
-        <header>
-          <ul>
-            {todo.map((x, i) =>
-              <li key={i} id={i} >{x} <button onClick={() => remove(x, i)} className='btn'>X</button> <button onClick={() => edit(x, i)} className='btn'>Edit</button> </li>
-            )}
-          </ul>
-        </header>
-
-      </header>
+          // Add more options
+        ]}
+        value={selectedOption}
+        onChange={handleSelectChange}
+      />
+      <br></br>
+      <br></br>
+      <br></br>
+      <h1>CARD COMPONENT:</h1>
+      <div className="div1">
+      <Card title="Card Title" content="Card Content" />
+      <Card title="Card Title" content="Card Content" />
+      <Card title="Card Title" content="Card Content" />
+      </div>
+      <br></br>
+      <br></br>
+        <h1>TABLE COMPONENT:</h1>
+      <Table data={tableData} />
     </div>
   );
 }
