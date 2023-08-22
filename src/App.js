@@ -22,10 +22,9 @@ function App() {
   };
 
   const tableData = [
-    { name: "Ahmed", age: 19, location: "karachi" , institute:"SAIMS",address:"Tower near aga khan hospital,Karachi" },
+    { name : "Ahmed", age: 19, location: "karachi" , institute:"SAIMS",address:"Tower near aga khan hospital,Karachi" },
     { name: "Kifal", age: 18, location: "Lahore",institute:"BMJ", address:"Bahadurabad nera Tooso,Karachi" },
     { name: "Usaid", age: 16, location: "Rawal-Pindi",institute:"KMA", address:"Husainabad nera Bombay koila karahi,Karachi" },
-    // Add more data
   ];
 
   return (
@@ -44,7 +43,7 @@ function App() {
     <h1>SELECT COMPONENT:</h1>
       <Select
         options={[
-          {value:"Lahore",label:"Where do you live"},
+          {value:"Where do you live",label:"Where do you live"},
           { value: "Karachi", label: "Karachi" },
           { value: "Islamabad", label: "Islamabad" },
           { value: "Quetta", label: "Quetta" },
@@ -66,6 +65,7 @@ function App() {
       <Card title="Card Title" content="Card Content" />
       <Card title="Card Title" content="Card Content" />
       </div>
+      
       <br></br>
       <br></br>
         <h1>TABLE COMPONENT:</h1>
